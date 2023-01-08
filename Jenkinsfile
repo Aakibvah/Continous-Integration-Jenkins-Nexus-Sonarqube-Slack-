@@ -1,8 +1,8 @@
 pipeline{
     agent any
     tools{
-        maven "MAVEN3"
-        jdk "oracleJDK8"
+        maven "MAVEN3",
+        jdk "orcaleJDK8"
     }
     environment{
         SNAP_REPO = 'vprofile-snapshot'
@@ -17,7 +17,9 @@ pipeline{
     }
     stages{
         stage("Build"){
-            sh 'mvn -s settings.xml -DskipTests install'
+            steps{
+                sh 'mvn -s settings.xml -DskipTests install'
+            }
         }
     }
 
