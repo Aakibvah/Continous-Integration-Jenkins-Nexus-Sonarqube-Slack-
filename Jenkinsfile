@@ -34,9 +34,18 @@ pipeline {
                     docker build -f Docker-files/app/Dockerfile -t aakibvah/vprofileapp .
                     docker build -f Docker-files/db/Dockerfile -t aakibvah/vprofileadb .
                     docker build -f Docker-files/web/Dockerfile -t aakibvah/vprofileweb .
-                    
-                
                 '''
+            }
+        }
+
+        stage('Pushing images'){
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerlogin', passwordVariable: 'Password', usernameVariable: 'User_Name')]) {
+                    sh '''
+                        docker login -u ${User_Name} -p ${Password}
+                        docker push aakibvah/vprofileapp aakibvah/vprofileadb aakibvah/vprofileweb
+                    '''
+                }
             }
         }
     }
