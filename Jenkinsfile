@@ -6,7 +6,6 @@ pipeline {
         maven "MAVEN3"
         jdk "JAVA_HOME"
     }
-
  
     stages{
         
@@ -32,7 +31,7 @@ pipeline {
             steps {
                 sh '''
                     docker build -f Docker-files/app/Dockerfile -t aakibvah/vprofileapp .
-                    docker build -f Docker-files/db/Dockerfile -t aakibvah/vprofileadb .
+                    docker build -f Docker-files/db/Dockerfile -t aakibvah/vprofiledb .
                     docker build -f Docker-files/web/Dockerfile -t aakibvah/vprofileweb .
                 '''
             }
@@ -43,8 +42,10 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dockerlogin', passwordVariable: 'Password', usernameVariable: 'User_Name')]) {
                     sh '''
                         docker login -u ${User_Name} -p ${Password}
-                        docker push aakibvah/vprofileapp aakibvah/vprofileadb aakibvah/vprofileweb
-                    '''
+                        docker push aakibvah/vprofileapp:latest
+                        docker push aakibvah/vprofileadb:latest
+                        docker push aakibvah/vprofileweb:latest
+                    '''  
                 }
             }
         }
