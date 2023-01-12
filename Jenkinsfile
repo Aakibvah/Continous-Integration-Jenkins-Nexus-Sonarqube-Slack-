@@ -43,7 +43,7 @@ pipeline {
                     sh '''
                         docker login -u ${User_Name} -p ${Password}
                         docker push aakibvah/vprofileapp:latest
-                        docker push aakibvah/vprofileadb:latest
+                        docker push aakibvah/vprofiledb:latest
                         docker push aakibvah/vprofileweb:latest
                     '''  
                 }
