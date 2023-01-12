@@ -3,7 +3,7 @@ LABEL "Project"="Vprofile"
 LABEL "Author"="MahmmadAakib Vahora"
 
 RUN rm -rf /usr/local/tomcat/webapps/*
-COPY /target/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
+COPY /var/lib/jenkins/workspace/CICD-Vproapp/target/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
