@@ -71,7 +71,7 @@ pipeline {
             }
            }
         }
-        /* 
+        
         stage('Building images'){
             steps {
                 sh '''
@@ -93,6 +93,6 @@ pipeline {
                     '''  
                 }
             }
-        }*/
+        }
     }
 }
