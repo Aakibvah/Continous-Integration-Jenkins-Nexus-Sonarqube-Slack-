@@ -33,7 +33,7 @@ spec:
                   key: db-pass
       nodeSelector:
         zone: us-east-2a
-        volumes:
+      volumes:
           - name: vpro-db-data
             awsElasticBlockStore:
               volumeID: vol-034d0d3aa046fd466
