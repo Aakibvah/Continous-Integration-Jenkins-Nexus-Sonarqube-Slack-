@@ -13,12 +13,12 @@ pipeline {
             steps {
                 sh 'mvn clean install -DskipTests'
             }
-            // post {
-            //     success {
-            //         echo 'Now Archiving...'
-            //         archiveArtifacts artifacts: '**/target/*.war'
-            //     }
-            //}
+            post {
+                success {
+                    echo 'Now Archiving...'
+                    archiveArtifacts artifacts: '**/target/*.war'
+                }
+            }
         }
 
 	    stage('UNIT TEST'){
@@ -27,6 +27,12 @@ pipeline {
             }
         }
 
+        stage('INTEGRATION TEST'){
+            steps {
+                sh 'mvn verify -DskipUnitTests'
+            }
+        }
+        /* 
         stage('Building images'){
             steps {
                 sh '''
@@ -48,6 +54,6 @@ pipeline {
                     '''  
                 }
             }
-        }
+        }*/
     }
 }
