@@ -1,0 +1,4 @@
+appImage: "aakibvah/vprofileapp"
+memcachedImage: "memcached"
+rabbitmqImage: "rabbitmq"
+dbImage: "aakibvah/vprofiledb"

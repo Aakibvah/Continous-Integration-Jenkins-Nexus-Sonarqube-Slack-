@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: vpromc
-          image: memcached
+          image: {{.Values.memcachedImage}}
           ports:
             - name: vpromc-port
               containerPort: 11211
